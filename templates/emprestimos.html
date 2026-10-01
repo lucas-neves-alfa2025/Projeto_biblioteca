@@ -1,83 +1,31 @@
-{% extends "base.html" %}
+<form method="GET" action="/emprestimos">
 
 
-{% block conteudo %}
+    <label>Filtrar por status:</label>
 
 
-<h2>Empréstimos Cadastrados</h2>
+    <select name="status">
+        <option value="">Todos</option>
 
 
-<p>
-    <a href="/emprestimos/novo">Registrar novo empréstimo</a>
-</p>
+        <option value="Emprestado" {% if status == 'Emprestado' %}selected{% endif %}>
+            Emprestado
+        </option>
 
 
-<table>
-    <thead>
-        <tr>
-            <th>ID</th>
-            <th>Aluno</th>
-            <th>Livro</th>
-            <th>Bibliotecário</th>
-            <th>Data Empréstimo</th>
-            <th>Previsão Devolução</th>
-            <th>Data Devolução</th>
-            <th>Status</th>
-            <th>Ações</th>
-        </tr>
-    </thead>
+        <option value="Devolvido" {% if status == 'Devolvido' %}selected{% endif %}>
+            Devolvido
+        </option>
+    </select>
 
 
-    <tbody>
+    <button type="submit">Filtrar</button>
 
 
-        {% for emprestimo in emprestimos %}
+    <a href="/emprestimos">Limpar</a>
 
 
-        <tr>
+</form>
 
 
-            <td>{{ emprestimo.id_emprestimo }}</td>
-            <td>{{ emprestimo.aluno }}</td>
-            <td>{{ emprestimo.livro }}</td>
-            <td>{{ emprestimo.bibliotecario }}</td>
-            <td>{{ emprestimo.data_emprestimo }}</td>
-            <td>{{ emprestimo.data_prevista_devolucao }}</td>
-            <td>{{ emprestimo.data_devolucao }}</td>
-            <td>{{ emprestimo.status }}</td>
-
-
-            <td>
-
-
-                {% if emprestimo.status == 'Emprestado' %}
-
-
-                <a href="/emprestimos/devolver/{{ emprestimo.id_emprestimo }}">
-                    Devolver
-                </a>
-
-
-                {% else %}
-
-
-                Devolvido
-
-
-                {% endif %}
-
-
-            </td>
-
-
-        </tr>
-
-
-        {% endfor %}
-
-
-    </tbody>
-</table>
-
-
-{% endblock %}
+<br>
