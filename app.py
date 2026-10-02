@@ -3,16 +3,11 @@ import mysql.connector
 from config import DB_CONFIG
 from datetime import datetime
 
-
-
 app = Flask(__name__)
 app.secret_key = "biblioteca_escolar"
 
-
-
 def conectar():
     return mysql.connector.connect(**DB_CONFIG)
-
 
 @app.route("/")
 def index():
@@ -60,8 +55,6 @@ def index():
             total_emprestimos=0
         )
 
-
-
 @app.route("/alunos")
 def listar_alunos():
     try:
@@ -106,11 +99,9 @@ def listar_alunos():
         flash(f"Erro ao listar alunos: {erro}", "erro")
         return redirect("/")
 
-
 @app.route("/alunos/novo")
 def formulario_aluno():
     return render_template("aluno_form.html")
-
 
 @app.route("/alunos/cadastrar", methods=["POST"])
 def cadastrar_aluno():
@@ -184,9 +175,6 @@ def editar_aluno(id_aluno):
     except Exception as erro:
         return f"Erro ao carregar aluno: {erro}"
 
-
-
-
 @app.route("/alunos/atualizar/<int:id_aluno>", methods=["POST"])
 def atualizar_aluno(id_aluno):
     try:
@@ -227,9 +215,6 @@ def atualizar_aluno(id_aluno):
     except Exception as erro:
         flash(f"Erro ao atualizar aluno: {erro}", "erro")
         return f"Erro ao atualizar aluno: {erro}"
-
-
-
 
 @app.route("/alunos/excluir/<int:id_aluno>")
 def excluir_aluno(id_aluno):
@@ -378,9 +363,6 @@ def editar_livro(id_livro):
     except Exception as erro:
         return f"Erro ao carregar livro: {erro}"
 
-
-
-
 @app.route("/livros/atualizar/<int:id_livro>", methods=["POST"])
 def atualizar_livro(id_livro):
     try:
@@ -420,9 +402,6 @@ def atualizar_livro(id_livro):
 
     except Exception as erro:
         return f"Erro ao atualizar livro: {erro}"
-
-
-
 
 @app.route("/livros/excluir/<int:id_livro>")
 def excluir_livro(id_livro):
@@ -473,15 +452,9 @@ def listar_bibliotecarios():
     except Exception as erro:
         return f"Erro ao listar bibliotecários: {erro}"
 
-
-
-
 @app.route("/bibliotecarios/novo")
 def formulario_bibliotecario():
     return render_template("bibliotecario_form.html")
-
-
-
 
 @app.route("/bibliotecarios/cadastrar", methods=["POST"])
 def cadastrar_bibliotecario():

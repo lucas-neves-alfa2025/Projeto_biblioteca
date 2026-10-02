@@ -28,16 +28,22 @@
 <br>
 
 <table>
-    <thead>
-        <tr>
-            <th>ID</th>
-            <th>Nome</th>
-            <th>Série</th>
-            <th>Turma</th>
-            <th>Telefone</th>
-            <th>Ações</th>
-        </tr>
-    </thead>
+    <form method="GET" action="/alunos">
+
+
+        <label>Pesquisar aluno:</label>
+        <input type="text" name="pesquisa" value="{{ pesquisa }}" placeholder="Nome, série ou turma">
+    
+    
+        <button type="submit">Pesquisar</button>
+    
+    
+        <a href="/alunos">Limpar</a>
+    
+    
+    </form>
+    <br>
+    
 
 
     <tbody>
