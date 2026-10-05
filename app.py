@@ -243,7 +243,6 @@ def excluir_aluno(id_aluno):
         flash("Não foi possível excluir o aluno. Verifique se ele possui empréstimos cadastrados.", "erro")
         return f"Erro ao excluir aluno: {erro}"
 
-# Rotas para livros
 @app.route("/livros")
 def listar_livros():
     try:
@@ -527,9 +526,6 @@ def editar_bibliotecario(id_bibliotecario):
     except Exception as erro:
         return f"Erro ao carregar bibliotecário: {erro}"
 
-
-
-
 @app.route("/bibliotecarios/atualizar/<int:id_bibliotecario>", methods=["POST"])
 def atualizar_bibliotecario(id_bibliotecario):
     try:
@@ -565,9 +561,6 @@ def atualizar_bibliotecario(id_bibliotecario):
 
     except Exception as erro:
         return f"Erro ao atualizar bibliotecário: {erro}"
-
-
-
 
 @app.route("/bibliotecarios/excluir/<int:id_bibliotecario>")
 def excluir_bibliotecario(id_bibliotecario):
@@ -684,9 +677,6 @@ def formulario_emprestimo():
     except Exception as erro:
         return f"Erro ao carregar formulário de empréstimo: {erro}"
 
-
-
-
 @app.route("/emprestimos/cadastrar", methods=["POST"])
 def cadastrar_emprestimo():
     try:
@@ -774,7 +764,6 @@ def cadastrar_emprestimo():
     except Exception as erro:
         flash("Erro ao registrar empréstimo.", "erro")
         return f"Erro ao cadastrar empréstimo: {erro}"
-
 
 # Rota para devolução de livro
 @app.route("/emprestimos/devolver/<int:id_emprestimo>")
